@@ -11,3 +11,4 @@ target/
 
 # Ignore VIM swap files
 *swp
+process-repo.log

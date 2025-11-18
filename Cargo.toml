@@ -1,4 +1,4 @@
-[workspace]
+#[workspace]
 members = [
     "zlib-rs",
     "libz-rs-sys",
@@ -23,7 +23,7 @@ homepage = "https://github.com/trifectatechfoundation/zlib-rs"
 readme = "./README.md"
 description = "A memory-safe zlib implementation written in rust"
 publish = true
-rust-version = "1.75" # MSRV
+# rust-version = "1.75" # MSRV
 
 [profile.release]
 debug = true
