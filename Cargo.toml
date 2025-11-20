@@ -25,11 +25,11 @@ description = "A memory-safe zlib implementation written in rust"
 publish = true
 # rust-version = "1.75" # MSRV
 
-[profile.release]
-debug = true
+# [profile.release]
+# debug = true
 
-[profile.dev]
-opt-level = 1 # required for the tail calls in inflate to optimize
+# [profile.dev]
+# opt-level = 1 # required for the tail calls in inflate to optimize
 
 [workspace.dependencies]
 libloading = "0.8.1"
