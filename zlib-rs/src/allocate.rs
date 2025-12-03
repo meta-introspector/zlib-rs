@@ -28,7 +28,7 @@ const _: () = assert!(ALIGN as usize % mem::size_of::<*mut c_void>() == 0);
 unsafe extern "C" fn zalloc_c(opaque: *mut c_void, items: c_uint, size: c_uint) -> *mut c_void {
     let _ = opaque;
 
-    extern "C" {
+    unsafe extern "C" {
         fn posix_memalign(memptr: *mut *mut c_void, align: size_t, size: size_t) -> c_int;
     }
 
@@ -78,7 +78,7 @@ unsafe extern "C" fn zalloc_c_calloc(
 ) -> *mut c_void {
     let _ = opaque;
 
-    extern "C" {
+    unsafe extern "C" {
         fn calloc(nitems: size_t, size: size_t) -> *mut c_void;
     }
 
@@ -99,7 +99,7 @@ unsafe extern "C" fn zalloc_c_calloc(
 unsafe extern "C" fn zfree_c(opaque: *mut c_void, ptr: *mut c_void) {
     let _ = opaque;
 
-    extern "C" {
+    unsafe extern "C" {
         fn free(p: *mut c_void);
     }
 

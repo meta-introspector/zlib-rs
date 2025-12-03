@@ -16,17 +16,17 @@ use crate::allocate::Allocator;
 use crate::c_api::internal_state;
 use crate::cpu_features::CpuFeatures;
 use crate::{
+    Code, DEF_WBITS, InflateFlush, MAX_WBITS, MIN_WBITS, ReturnCode,
     adler32::adler32,
-    c_api::{gz_header, z_checksum, z_size, z_stream, Z_DEFLATED},
+    c_api::{Z_DEFLATED, gz_header, z_checksum, z_size, z_stream},
     inflate::writer::Writer,
-    Code, InflateFlush, ReturnCode, DEF_WBITS, MAX_WBITS, MIN_WBITS,
 };
 
-use crate::crc32::{crc32, Crc32Fold};
+use crate::crc32::{Crc32Fold, crc32};
 
 use self::{
     bitreader::BitReader,
-    inftrees::{inflate_table, CodeType, InflateTable},
+    inftrees::{CodeType, InflateTable, inflate_table},
     window::Window,
 };
 
@@ -130,7 +130,7 @@ impl<'a> InflateStream<'a> {
 
 const MAX_BITS: u8 = 15; // maximum number of bits in a code
 const MAX_DIST_EXTRA_BITS: u8 = 13; // maximum number of extra distance bits
-                                    //
+//
 pub fn uncompress_slice<'a>(
     output: &'a mut [u8],
     input: &[u8],
@@ -1292,7 +1292,9 @@ impl State<'_> {
                             }
                             _ => {
                                 // LLVM will optimize this branch away
-                                unreachable!("BitReader::bits(2) only yields a value of two bits, so this match is already exhaustive")
+                                unreachable!(
+                                    "BitReader::bits(2) only yields a value of two bits, so this match is already exhaustive"
+                                )
                             }
                         }
                     }

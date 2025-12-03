@@ -1,11 +1,12 @@
 #![forbid(unsafe_code)]
 
 use crate::{
+    DeflateFlush,
     deflate::{
-        fill_window, flush_block_only, BlockState, DeflateStream, Strategy, MIN_LOOKAHEAD,
-        STD_MIN_MATCH, WANT_MIN_MATCH,
+        BlockState, DeflateStream, MIN_LOOKAHEAD, STD_MIN_MATCH, Strategy, WANT_MIN_MATCH,
+        fill_window, flush_block_only,
     },
-    flush_block, DeflateFlush,
+    flush_block,
 };
 
 pub fn deflate_slow(stream: &mut DeflateStream, flush: DeflateFlush) -> BlockState {

@@ -1,13 +1,13 @@
 use core::{ffi::CStr, marker::PhantomData, mem::MaybeUninit, ops::ControlFlow};
 
 use crate::{
+    ADLER32_INITIAL_VALUE, CRC32_INITIAL_VALUE, DeflateFlush, MAX_WBITS, MIN_WBITS, ReturnCode,
     adler32::adler32,
     allocate::Allocator,
     c_api::{gz_header, internal_state, z_checksum, z_stream},
-    crc32::{crc32, Crc32Fold},
+    crc32::{Crc32Fold, crc32},
     trace,
     weak_slice::{WeakArrayMut, WeakSliceMut},
-    DeflateFlush, ReturnCode, ADLER32_INITIAL_VALUE, CRC32_INITIAL_VALUE, MAX_WBITS, MIN_WBITS,
 };
 
 use self::{
@@ -2289,8 +2289,7 @@ fn build_bl_tree(state: &mut State) -> usize {
     state.opt_len += 3 * (max_blindex + 1) + 5 + 5 + 4;
     trace!(
         "\ndyn trees: dyn {}, stat {}",
-        state.opt_len,
-        state.static_len
+        state.opt_len, state.static_len
     );
 
     max_blindex
@@ -2330,8 +2329,7 @@ fn zng_tr_flush_block(
 
             trace!(
                 "\nlit data: dyn {}, stat {}",
-                state.opt_len,
-                state.static_len
+                state.opt_len, state.static_len
             );
         }
 
@@ -2343,8 +2341,7 @@ fn zng_tr_flush_block(
 
             trace!(
                 "\ndist data: dyn {}, stat {}",
-                state.opt_len,
-                state.static_len
+                state.opt_len, state.static_len
             );
         }
 
@@ -3259,8 +3256,8 @@ pub unsafe fn get_dictionary(stream: &DeflateStream<'_>, dictionary: *mut u8) ->
 #[cfg(test)]
 mod test {
     use crate::{
-        inflate::{uncompress_slice, InflateConfig, InflateStream},
         InflateFlush,
+        inflate::{InflateConfig, InflateStream, uncompress_slice},
     };
 
     use super::*;

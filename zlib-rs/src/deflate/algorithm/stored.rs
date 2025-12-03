@@ -1,8 +1,8 @@
 use crate::{
-    deflate::{
-        flush_pending, read_buf_window, zng_tr_stored_block, BlockState, DeflateStream, MAX_STORED,
-    },
     DeflateFlush,
+    deflate::{
+        BlockState, DeflateStream, MAX_STORED, flush_pending, read_buf_window, zng_tr_stored_block,
+    },
 };
 
 pub fn deflate_stored(stream: &mut DeflateStream, flush: DeflateFlush) -> BlockState {

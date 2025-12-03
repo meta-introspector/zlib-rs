@@ -2,11 +2,11 @@
 
 use crate::deflate::hash_calc::StandardHashCalc;
 use crate::{
-    deflate::{
-        fill_window, flush_pending, BlockState, BlockType, DeflateStream, State, StaticTreeDesc,
-        MIN_LOOKAHEAD, STD_MAX_MATCH, STD_MIN_MATCH, WANT_MIN_MATCH,
-    },
     DeflateFlush,
+    deflate::{
+        BlockState, BlockType, DeflateStream, MIN_LOOKAHEAD, STD_MAX_MATCH, STD_MIN_MATCH, State,
+        StaticTreeDesc, WANT_MIN_MATCH, fill_window, flush_pending,
+    },
 };
 
 pub fn deflate_quick(stream: &mut DeflateStream, flush: DeflateFlush) -> BlockState {

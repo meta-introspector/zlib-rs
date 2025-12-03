@@ -1,4 +1,4 @@
-use crate::deflate::{Pos, State, MIN_LOOKAHEAD, STD_MAX_MATCH, STD_MIN_MATCH};
+use crate::deflate::{MIN_LOOKAHEAD, Pos, STD_MAX_MATCH, STD_MIN_MATCH, State};
 
 const EARLY_EXIT_TRIGGER_LEVEL: i8 = 5;
 

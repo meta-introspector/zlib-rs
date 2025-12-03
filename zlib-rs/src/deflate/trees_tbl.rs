@@ -1,7 +1,7 @@
 #![forbid(unsafe_code)]
 
 use crate::deflate::{
-    Value, DIST_CODE_LEN, D_CODES, LENGTH_CODES, L_CODES, STD_MAX_MATCH, STD_MIN_MATCH,
+    D_CODES, DIST_CODE_LEN, L_CODES, LENGTH_CODES, STD_MAX_MATCH, STD_MIN_MATCH, Value,
 };
 
 const fn h(freq: u16, code: u16) -> Value {

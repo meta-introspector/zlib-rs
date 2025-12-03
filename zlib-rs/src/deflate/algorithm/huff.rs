@@ -1,8 +1,9 @@
 #![forbid(unsafe_code)]
 
 use crate::{
-    deflate::{fill_window, BlockState, DeflateStream},
-    flush_block, DeflateFlush,
+    DeflateFlush,
+    deflate::{BlockState, DeflateStream, fill_window},
+    flush_block,
 };
 
 pub fn deflate_huff(stream: &mut DeflateStream, flush: DeflateFlush) -> BlockState {

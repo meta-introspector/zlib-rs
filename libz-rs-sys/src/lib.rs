@@ -31,9 +31,9 @@ use core::mem::MaybeUninit;
 use core::ffi::{c_char, c_int, c_long, c_uchar, c_uint, c_ulong, c_void};
 
 use zlib_rs::{
+    DeflateFlush, InflateFlush, ReturnCode,
     deflate::{DeflateConfig, DeflateStream, Method, Strategy},
     inflate::{InflateConfig, InflateStream},
-    DeflateFlush, InflateFlush, ReturnCode,
 };
 
 pub use zlib_rs::c_api::*;
@@ -88,7 +88,6 @@ macro_rules! prefix {
     };
 }
 
-pub(crate) use prefix;
 
 #[cfg(all(feature = "rust-allocator", feature = "c-allocator"))]
 const _: () =

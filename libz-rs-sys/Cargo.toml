@@ -24,4 +24,4 @@ testing-prefix = ["export-symbols"] # prefix all symbols with LIBZ_RS_SYS_TEST_ 
 semver-prefix = ["export-symbols"] # prefix all symbols in a semver-compatible way
 
 [dependencies]
-zlib-rs = { workspace = true, default-features = false }
+zlib-rs = { workspace = true}

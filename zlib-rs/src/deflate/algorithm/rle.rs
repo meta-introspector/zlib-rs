@@ -1,11 +1,12 @@
 #![forbid(unsafe_code)]
 
 use crate::{
+    DeflateFlush,
     deflate::{
-        compare256::compare256_rle_slice, fill_window, BlockState, DeflateStream, MIN_LOOKAHEAD,
-        STD_MAX_MATCH, STD_MIN_MATCH,
+        BlockState, DeflateStream, MIN_LOOKAHEAD, STD_MAX_MATCH, STD_MIN_MATCH,
+        compare256::compare256_rle_slice, fill_window,
     },
-    flush_block, DeflateFlush,
+    flush_block,
 };
 
 pub fn deflate_rle(stream: &mut DeflateStream, flush: DeflateFlush) -> BlockState {

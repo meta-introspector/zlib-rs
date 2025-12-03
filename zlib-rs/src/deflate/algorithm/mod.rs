@@ -1,6 +1,6 @@
 use crate::{
-    deflate::{BlockState, DeflateStream, Strategy},
     DeflateFlush,
+    deflate::{BlockState, DeflateStream, Strategy},
 };
 
 use self::{huff::deflate_huff, rle::deflate_rle, stored::deflate_stored};

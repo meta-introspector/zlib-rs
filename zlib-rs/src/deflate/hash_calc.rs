@@ -1,6 +1,6 @@
 #![forbid(unsafe_code)]
 
-use crate::deflate::{State, HASH_SIZE, STD_MIN_MATCH};
+use crate::deflate::{HASH_SIZE, STD_MIN_MATCH, State};
 
 #[derive(Debug, Clone, Copy)]
 pub enum HashCalcVariant {
